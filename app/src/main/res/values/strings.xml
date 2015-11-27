@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Devfest Feedback</string>
+
+    <string name="query_hint">Seans Arama</string>
 </resources>
