@@ -7,7 +7,7 @@
     android:orientation="horizontal">
 
     <RelativeLayout
-        android:id="@+id/feedback_good"
+        android:id="@+id/feedback_good_layout"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -15,6 +15,7 @@
         android:paddingRight="@dimen/horizontal_padding">
 
         <ImageView
+            android:id="@+id/feedback_good"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -25,7 +26,7 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/feedback_neutral"
+        android:id="@+id/feedback_neutral_layout"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -33,6 +34,7 @@
         android:paddingRight="@dimen/horizontal_padding">
 
         <ImageView
+            android:id="@+id/feedback_neutral"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -43,7 +45,7 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/feedback_bad"
+        android:id="@+id/feedback_bad_layout"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -51,6 +53,7 @@
         android:paddingRight="@dimen/horizontal_padding">
 
         <ImageView
+            android:id="@+id/feedback_bad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
