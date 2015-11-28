@@ -15,6 +15,7 @@
         <activity
             android:name=".activities.SessionsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:icon="@mipmap/ic_launcher_sessions"
             android:label="@string/act_select_name"
             android:launchMode="singleTop"
             android:screenOrientation="portrait">
