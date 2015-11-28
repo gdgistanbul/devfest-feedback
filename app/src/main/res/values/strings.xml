@@ -5,4 +5,8 @@
 
     <string name="query_hint">Sunum Arama</string>
     <string name="feedback_session_error">Sunum Seçiniz</string>
+
+    <string name="menu_item_open_file">Dosyayı Aç</string>
+    <string name="menu_item_copy_file_path">Dosya pathini kopyala</string>
+    <string name="menu_item_send_file">Dosya gönder</string>
 </resources>

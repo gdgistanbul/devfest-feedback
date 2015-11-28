@@ -1,13 +1,20 @@
 package com.gdgistanbul.devfest.feedback.activities;
 
+import android.content.ActivityNotFoundException;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -16,6 +23,7 @@ import com.gdgistanbul.devfest.feedback.R;
 import com.gdgistanbul.devfest.feedback.adapters.SessionsAdapter;
 import com.gdgistanbul.devfest.feedback.interfaces.SessionItemListener;
 import com.gdgistanbul.devfest.feedback.models.Session;
+import com.gdgistanbul.devfest.feedback.util.FileUtil;
 import com.gdgistanbul.devfest.feedback.util.PrefUtils;
 import com.google.gson.Gson;
 import com.jakewharton.rxbinding.widget.RxTextView;
@@ -65,6 +73,43 @@ public class SessionsActivity extends AppCompatActivity implements SessionItemLi
     ButterKnife.bind(this);
     setupViews();
     readSessions();
+  }
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    MenuInflater inflater = getMenuInflater();
+    inflater.inflate(R.menu.export, menu);
+    return super.onCreateOptionsMenu(menu);
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case R.id.menu_item_open_file:
+        Intent newIntent = new Intent(Intent.ACTION_VIEW);
+        newIntent.setDataAndType(Uri.fromFile(FileUtil.getExportFile(this)), "text/csv");
+        newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        try {
+          startActivity(newIntent);
+        } catch (ActivityNotFoundException e) {
+          Toast.makeText(this, "No handler for this type of file.", Toast.LENGTH_LONG).show();
+        }
+        break;
+      case R.id.menu_item_copy_file_path:
+        ClipboardManager clipboard = (ClipboardManager)
+            getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("Export File", FileUtil.getExportFile(this).getAbsolutePath());
+        clipboard.setPrimaryClip(clip);
+        Toast.makeText(this, "Dosya : " + FileUtil.getExportFile(this).getAbsolutePath(), Toast.LENGTH_SHORT).show();
+        break;
+      case R.id.menu_item_send_file:
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(FileUtil.getExportFile(this)));
+        shareIntent.setType("text/csv");
+        startActivity(Intent.createChooser(shareIntent, "Feedback File"));
+        break;
+    }
+    return true;
   }
 
   private void setupViews() {
