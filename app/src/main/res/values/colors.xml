@@ -5,4 +5,8 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="black_overlay">#66000000</color>
+
+    <color name="feedback_good">#43A047</color>
+    <color name="feedback_neutral">#FDD835</color>
+    <color name="feedback_bad">#F4511E</color>
 </resources>

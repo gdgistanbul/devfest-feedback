@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Devfest Feedback</string>
+    <string name="act_select_name">Devfest Sunum Seç</string>
+    <string name="act_feedback">Devfest Feedback</string>
 
-    <string name="query_hint">Seans Arama</string>
+    <string name="query_hint">Sunum Arama</string>
+    <string name="feedback_session_error">Sunum Seçiniz</string>
 </resources>

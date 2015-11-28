@@ -1,4 +1,4 @@
-package com.gdgistanbul.devfest.feedback.model;
+package com.gdgistanbul.devfest.feedback.models;
 
 public class Session {
   public int id;

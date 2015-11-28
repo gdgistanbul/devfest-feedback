@@ -1,5 +1,7 @@
-package com.gdgistanbul.devfest.feedback;
+package com.gdgistanbul.devfest.feedback.activities;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -10,8 +12,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.gdgistanbul.devfest.feedback.adapter.SessionsAdapter;
-import com.gdgistanbul.devfest.feedback.model.Session;
+import com.gdgistanbul.devfest.feedback.R;
+import com.gdgistanbul.devfest.feedback.adapters.SessionsAdapter;
+import com.gdgistanbul.devfest.feedback.interfaces.SessionItemListener;
+import com.gdgistanbul.devfest.feedback.models.Session;
+import com.gdgistanbul.devfest.feedback.util.PrefUtils;
 import com.google.gson.Gson;
 import com.jakewharton.rxbinding.widget.RxTextView;
 
@@ -29,7 +34,7 @@ import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import timber.log.Timber;
 
-public class SessionsActivity extends AppCompatActivity {
+public class SessionsActivity extends AppCompatActivity implements SessionItemListener {
 
   public static final String TAG = SessionsActivity.class.getSimpleName();
 
@@ -45,6 +50,12 @@ public class SessionsActivity extends AppCompatActivity {
   private List<Session> sessions;
   private List<Session> filteredSessions;
   private SessionsAdapter adapter;
+
+  public static Intent newInstance(Context context) {
+    Intent intent = new Intent(context, SessionsActivity.class);
+    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+    return intent;
+  }
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +77,7 @@ public class SessionsActivity extends AppCompatActivity {
     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
     linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
     resultView.setLayoutManager(linearLayoutManager);
-    adapter = new SessionsAdapter(new ArrayList<Session>());
+    adapter = new SessionsAdapter(new ArrayList<Session>(), this);
     resultView.setAdapter(adapter);
     // query editText
     RxTextView
@@ -123,7 +134,7 @@ public class SessionsActivity extends AppCompatActivity {
 
       @Override
       public void onError(Throwable e) {
-        Timber.e(e, "Error");
+        Timber.e(e, "readSessions Error");
         Toast.makeText(SessionsActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
       }
 
@@ -134,5 +145,11 @@ public class SessionsActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
       }
     });
+  }
+
+  @Override
+  public void onSessionSelect(Session session) {
+    PrefUtils.setCurrentSession(this, session);
+    startActivity(FeedbackActivity.newInstance(this));
   }
 }
