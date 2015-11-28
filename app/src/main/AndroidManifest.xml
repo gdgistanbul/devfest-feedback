@@ -3,7 +3,7 @@
     package="com.gdgistanbul.devfest.feedback"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -16,6 +16,7 @@
             android:name=".activities.SessionsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/act_select_name"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -27,6 +28,7 @@
             android:name=".activities.FeedbackActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/act_feedback"
+            android:launchMode="singleTop"
             android:parentActivityName=".activities.SessionsActivity"
             android:screenOrientation="landscape"
             android:theme="@style/NoActionBarTheme">

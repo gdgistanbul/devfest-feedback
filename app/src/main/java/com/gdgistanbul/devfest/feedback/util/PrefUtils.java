@@ -12,12 +12,11 @@ import timber.log.Timber;
 public class PrefUtils {
 
   public static final String CURRENT_SESSION_KEY = "current_session";
+  public static final String EXPORT_FILE_PATH_KEY = "export_file_path";
 
   public static void setCurrentSession(Context context, Session session) {
     SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-    SharedPreferences.Editor editor = prefs.edit();
-    editor.putString(CURRENT_SESSION_KEY, new Gson().toJson(session));
-    editor.commit();
+    prefs.edit().putString(CURRENT_SESSION_KEY, new Gson().toJson(session)).apply();
   }
 
   public static Session getCurrentSession(Context context) {
@@ -29,6 +28,16 @@ public class PrefUtils {
       Timber.e(e, "getCurrentSession");
     }
     return null;
+  }
+
+  public static void setExportFilePath(Context context, String path) {
+    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+    prefs.edit().putString(EXPORT_FILE_PATH_KEY, path).apply();
+  }
+
+  public static String getExportFilePath(Context context) {
+    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+    return prefs.getString(EXPORT_FILE_PATH_KEY, null);
   }
 
 }
