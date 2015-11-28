@@ -64,7 +64,7 @@ public class FileUtil {
     appendLine(getExportFile(context), line);
   }
 
-  public static void appendLine(File file, String line) {
+  public synchronized static void appendLine(File file, String line) {
     FileWriter writer = null;
     try {
       writer = new FileWriter(file, true);
