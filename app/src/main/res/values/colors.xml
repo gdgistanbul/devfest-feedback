@@ -6,7 +6,9 @@
 
     <color name="black_overlay">#66000000</color>
 
-    <color name="feedback_good">#43A047</color>
-    <color name="feedback_neutral">#FDD835</color>
-    <color name="feedback_bad">#F4511E</color>
+    <color name="feedback_bg">#0266C8</color>
+
+    <color name="feedback_good">#1B5E20</color>
+    <color name="feedback_neutral">#BF360C</color>
+    <color name="feedback_bad">#B71C1C</color>
 </resources>

@@ -3,13 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/feedback_bg"
     android:orientation="horizontal">
 
     <RelativeLayout
+        android:id="@+id/feedback_good"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:background="@color/feedback_good"
         android:layout_weight="1"
         android:paddingLeft="@dimen/horizontal_padding"
         android:paddingRight="@dimen/horizontal_padding">
@@ -19,38 +19,44 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:adjustViewBounds="true"
-            android:src="@drawable/ic_mood_white_96dp"/>
+            android:background="@drawable/circle_bg_good"
+            android:padding="@dimen/image_padding"
+            android:src="@drawable/feedback_good"/>
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/feedback_neutral"
         android:layout_width="0dp"
-        android:background="@color/feedback_neutral"
-        android:paddingRight="@dimen/horizontal_padding"
-        android:paddingLeft="@dimen/horizontal_padding"
         android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:paddingLeft="@dimen/horizontal_padding"
+        android:paddingRight="@dimen/horizontal_padding">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:adjustViewBounds="true"
-            android:src="@drawable/ic_face_white_96dp"/>
+            android:background="@drawable/circle_bg_neutral"
+            android:padding="@dimen/image_padding"
+            android:src="@drawable/feedback_neutral"/>
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/feedback_bad"
         android:layout_width="0dp"
-        android:background="@color/feedback_bad"
-        android:paddingRight="@dimen/horizontal_padding"
-        android:paddingLeft="@dimen/horizontal_padding"
         android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:paddingLeft="@dimen/horizontal_padding"
+        android:paddingRight="@dimen/horizontal_padding">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:adjustViewBounds="true"
-            android:src="@drawable/ic_mood_bad_white_96dp"/>
+            android:background="@drawable/circle_bg_bad"
+            android:padding="@dimen/image_padding"
+            android:src="@drawable/feedback_bad"/>
     </RelativeLayout>
 </LinearLayout>
