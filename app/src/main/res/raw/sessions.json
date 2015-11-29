@@ -86,9 +86,9 @@
     ]
 }, {
     "id": 103,
-    "title": "JSF with PrimeFaces, from Ugly Duckling to a Beautiful Swan",
-    "description": "JSF has come a long way since its initial release and managed to catch up with modern web development model. Combined with the popular PrimeFaces framework, JSF unleashes its true potential.<br/><br/>This session takes you on a tour of modern component based java development with server rendering featuring rich set of components, responsive design, powerful Ajax APIs, a real-time push framework with websockets, a mobile web renderkit, the dialog framework, extensive client-side validation and attractive page layouts.",
-    "speakers": [3],
+    "title": "Xavier Hallade - Android NDK",
+    "description": "",
+    "speakers": [20],
     "language": "EN",
     "complexity": "",
     "presentation": "",
